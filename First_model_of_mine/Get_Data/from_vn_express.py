@@ -1,6 +1,5 @@
 import re
 from bs4 import BeautifulSoup
-
 import requests
 from prometheus_client.decorator import getfullargspec
 

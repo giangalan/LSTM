@@ -6,7 +6,7 @@ test_percent = 0.2
 text = []
 label = []
 
-for line in open('dataset.txt'):
+for line in open('/home/code/NLP/First_model_of_mine/Get_Data/dataset.txt'):
     words = line.strip().split()
     label.append(words[0])
     text.append(' '.join(words[1:]))

@@ -1,5 +1,6 @@
 import re
 from builtins import type
+import pandas as pd
 
 from bs4 import BeautifulSoup
 
@@ -12,6 +13,7 @@ def get_link(topic_link):
     topic = BeautifulSoup(topicurl.content)
     links = topic.findAll('article', attrs={'class': 'item-news item-news-common '})
     # for link in links:
+
 
 # print (link)
 
@@ -27,13 +29,13 @@ def get_data(news) -> dict:
     get_description = news.find('p', attrs={'class': 'description'}).text
     get_detail = news.find('article', attrs={'class': 'fck_detail'})
     get_text = get_detail.findAll('p', attrs={'class': 'Normal'})
-    data = ''
-    data += 'title:' + get_title + '\n'
-    data += 'description:' + get_description + '\n'
-    data += 'content:'
+    data = {}
+    data['title'] = get_title
+    data['description'] = get_description
+    data['content'] = ''
     for item in get_text:
-        data += item.text + '\n'
-    return data
+        data['content'] += item.text
+    print(data)
 
 
 def save_data(data, filepath):
@@ -45,5 +47,7 @@ def save_data(data, filepath):
 filepath = '/NLP/First_model_of_mine/Get_Data/dataset.txt'
 link = 'https://vnexpress.net/nga-dieu-tra-khung-bo-quoc-te-vu-ro-ri-nord-stream-4517046.html'
 news = get_website(link)
-data = get_data(news)
-save_data(data, filepath)
+get_data(news)
+# save_data(data, filepath)
+# df = pd.DataFrame(data)
+# print(df)
