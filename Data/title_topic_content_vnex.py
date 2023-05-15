@@ -50,9 +50,11 @@ def cr_pm(topic_list, num_page):
     if response.status_code == 200:
         sour_parent = BeautifulSoup(response.content, "html.parser")
         titles = sour_parent.findAll('h1', class_='title-news')
-        if titles:
-            links = [link.find('a').attrs["href"] for link in titles]
-            crawl(links, topic_list)
+        links = [link.find('a').attrs["href"] for link in titles]
+        crawl(links, topic_list)
+        titles = sour_parent.findAll('h2', class_='title-news')
+        links = [link.find('a').attrs["href"] for link in titles]
+        crawl(links, topic_list)
         titles = sour_parent.findAll('h3', class_='title-news')
         links = [link.find('a').attrs["href"] for link in titles]
         crawl(links, topic_list)
