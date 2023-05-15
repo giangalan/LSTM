@@ -1,0 +1,26 @@
+Đoạn mã này sử dụng Keras để tạo một mô hình mạng LSTM để phân loại văn bản trong bộ dữ liệu IMDB.
+
+1. Tải bộ dữ liệu IMDB từ thư viện Keras và chia thành tập huấn luyện và tập kiểm tra.
+
+2. Sử dụng phương thức pad_sequences từ Keras để đệm các chuỗi trong tập huấn luyện và tập kiểm tra về độ dài cố định là 500.
+
+3. Tạo một mô hình LSTM với lớp nhúng Embedding, lớp LSTM, lớp Dropout và lớp Dense với hàm kích hoạt sigmoid.
+
+4. Biên dịch mô hình với hàm mất mát là binary_crossentropy và tối ưu hóa bằng adam, sử dụng độ đo accuracy để đánh giá hiệu suất.
+
+5. Luyện mô hình trên tập huấn luyện, đánh giá trên tập kiểm tra và in ra độ chính xác trên tập kiểm tra.
+
+Mô hình này sử dụng lớp nhúng Embedding để biểu diễn các từ trong một câu dưới dạng vector, lớp LSTM để xử lý thông tin trong chuỗi và lớp Dense để phân loại văn bản. Lớp Dropout được sử dụng để giảm thiểu quá khớp trong quá trình huấn luyện.
+
+Các lớp:
+1. Lớp nhúng Embedding:
+Lớp nhúng Embedding là một lớp được sử dụng để biểu diễn các từ trong văn bản dưới dạng vector. Nó ánh xạ mỗi từ vào một vector đặc trưng để mô hình có thể dễ dàng xử lý các từ trong văn bản. Thông thường, các vector đặc trưng này có số chiều nhỏ hơn kích thước từ điển và được học trong quá trình huấn luyện mô hình.
+
+2. Lớp LSTM:
+LSTM là viết tắt của Long Short-Term Memory. Đây là một lớp mạng nơ-ron đặc biệt được sử dụng trong xử lý ngôn ngữ tự nhiên (NLP). Nó được thiết kế để giải quyết vấn đề mất thông tin khi xử lý dữ liệu chuỗi dài. LSTM có khả năng lưu trữ thông tin trong một thời điểm và ghi nhớ nó cho các thời điểm tiếp theo. Vì vậy, nó có thể học được cấu trúc phụ thuộc dài trong dữ liệu chuỗi và tránh được việc mất thông tin.
+
+3. Lớp Dropout:
+Lớp Dropout là một lớp đặc biệt được sử dụng để giảm thiểu quá khớp (overfitting) trong quá trình huấn luyện mô hình. Nó ngẫu nhiên loại bỏ một số đơn vị đầu vào (neuron) khỏi mạng trong mỗi lần lặp để mô hình không quá tập trung vào một số đặc trưng đặc biệt và có thể học được nhiều đặc trưng khác nhau trong dữ liệu. Điều này giúp cải thiện hiệu suất dự đoán trên tập kiểm tra và giảm thiểu sự phụ thuộc vào dữ liệu huấn luyện.
+
+4. Lớp Dense:
+Lớp Dense là một lớp đơn giản trong mạng nơ-ron, mỗi đơn vị đầu ra của nó được kết nối đầy đủ với tất cả đơn vị đầu vào của lớp trước đó. Nó được sử dụng để biến đổi đầu vào thành đầu ra theo một hàm kích hoạt nhất định. Trong trường hợp này, lớp Dense được sử dụng để phân loại văn bản thành hai lớp (positive/negative) bằng hàm kích hoạt sigmoid, một hàm có giá trị đầu ra nằm trong khoảng từ 0 đến 1.
