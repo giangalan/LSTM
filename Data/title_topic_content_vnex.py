@@ -54,7 +54,7 @@ def cr_pm(topic_list, num_page):
         crawl(links, topic_list)
         titles = sour_parent.findAll('h2', class_='title-news')
         links = [link.find('a').attrs["href"] for link in titles]
-        crawl(links, topic_list)
+        crawl(links, topic_list)       
         titles = sour_parent.findAll('h3', class_='title-news')
         links = [link.find('a').attrs["href"] for link in titles]
         crawl(links, topic_list)
@@ -66,7 +66,8 @@ def mul_pro(topic_list):
 
 
 if __name__ == '__main__':
-    topic_lists = ['the-gioi', 'the-thao', 'khoa-hoc','giai-tri','kinh-doanh','phap-luat','giao-duc','suc-khoe']
+    # topic_lists = ['the-gioi', 'the-thao', 'khoa-hoc']
+    topic_lists = ['the-gioi']
     processes = []
     for topic in topic_lists:
         mul_pro(topic)
