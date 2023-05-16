@@ -24,3 +24,7 @@ Lớp Dropout là một lớp đặc biệt được sử dụng để giảm th
 
 4. Lớp Dense:
 Lớp Dense là một lớp đơn giản trong mạng nơ-ron, mỗi đơn vị đầu ra của nó được kết nối đầy đủ với tất cả đơn vị đầu vào của lớp trước đó. Nó được sử dụng để biến đổi đầu vào thành đầu ra theo một hàm kích hoạt nhất định. Trong trường hợp này, lớp Dense được sử dụng để phân loại văn bản thành hai lớp (positive/negative) bằng hàm kích hoạt sigmoid, một hàm có giá trị đầu ra nằm trong khoảng từ 0 đến 1.
+
+
+
+https://phamdinhkhanh.github.io/2019/04/22/Ly_thuyet_ve_mang_LSTM.html
