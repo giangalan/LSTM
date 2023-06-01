@@ -3,7 +3,7 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from multiprocessing import Process
+from threading import Thread
 # import hashlib
 
 dict = {'topic': [], 'title':[], 'content':[] }
@@ -61,21 +61,21 @@ def cr_pm(topic_list, num_page):
         crawl(links, topic_list)
 
 
-def mul_pro(topic_list):
+def mul_pro(topic):
     for num_page in range(1, 20):
-        cr_pm(topic_list, num_page)
-
+        cr_pm(topic, num_page)
 
 if __name__ == '__main__':
     topic_lists = ['the-gioi', 'the-thao', 'khoa-hoc','giai-tri','kinh-doanh','phap-luat','giao-duc','suc-khoe']
-    processes = []
+    threads = []
+
     for topic in topic_lists:
-        mul_pro(topic)
-        p = Process(target=mul_pro, args=[topic])
-        p.start()
-        processes.append(p)
-    for process in processes:
-        process.join()
+        t = Thread(target=mul_pro, args=[topic])
+        t.start()
+        threads.append(t)
+
+    for thread in threads:
+        thread.join()
 
 
 df = pd.DataFrame(dict)
