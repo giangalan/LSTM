@@ -2,7 +2,7 @@ import string
 import pandas as pd
 from underthesea import word_tokenize, classify
 
-data = pd.read_csv('../../Data/data_copy.csv')
+data = pd.read_csv('../../Data/data_colab.csv')
 
 def preprocess(data):
     listpunctuation = string.punctuation.replace('_', '').replace('.','').replace(',','')
@@ -10,23 +10,18 @@ def preprocess(data):
         data = data.replace(i, ' ')
     return data
 
-def split(paragraph):
-    sent_list = paragraph.split('. ')
+def clean(paragraph):
+    sent_list = paragraph.split('.')
+    paragraph = ''
     for sent in sent_list:
         sent = sent.strip()
+        sent = word_tokenize(sent, format="text")
         if sent.endswith('.'):
             sent = sent[:-1]
-    return sent_list
-types = ['the_gioi']
+        paragraph += sent+' '
+    return paragraph
 # for i in range(1,20):
-for item in data['content']:
-    para = preprocess(item)
-    sent_list = split(item)
-    parag = ''
-    for sent in sent_list:
-        sent = word_tokenize(sent, format="text")
-        parag += sent+' '
-    a = classify(parag) 
-    if a not in types:
-        types.append(a)
-print(types)
+para = preprocess(data['content'][3])
+para = clean(para)
+classe = classify(para)
+print(classe)
