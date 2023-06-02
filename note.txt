@@ -1,5 +1,4 @@
-Đoạn mã này sử dụng Keras để tạo một mô hình mạng LSTM để phân loại văn bản trong bộ dữ liệu IMDB.
-
+Ý tưởng chung
 1. Tải bộ dữ liệu IMDB từ thư viện Keras và chia thành tập huấn luyện và tập kiểm tra.
 
 2. Sử dụng phương thức pad_sequences từ Keras để đệm các chuỗi trong tập huấn luyện và tập kiểm tra về độ dài cố định là 500.
@@ -24,7 +23,31 @@ Lớp Dropout là một lớp đặc biệt được sử dụng để giảm th
 
 4. Lớp Dense:
 Lớp Dense là một lớp đơn giản trong mạng nơ-ron, mỗi đơn vị đầu ra của nó được kết nối đầy đủ với tất cả đơn vị đầu vào của lớp trước đó. Nó được sử dụng để biến đổi đầu vào thành đầu ra theo một hàm kích hoạt nhất định. Trong trường hợp này, lớp Dense được sử dụng để phân loại văn bản thành hai lớp (positive/negative) bằng hàm kích hoạt sigmoid, một hàm có giá trị đầu ra nằm trong khoảng từ 0 đến 1.
+---------------------------------------------------------------------------------------------------------
+Embedding
+Keras Embedding và gensim Word2Vec Embedding là hai phương pháp phổ biến để biểu diễn từ trong văn bản thành các vectơ mật độ (dense vectors). Dưới đây là một so sánh giữa hai phương pháp này:
+
+1. Keras Embedding:
+   - Keras Embedding là một lớp trong thư viện Keras được sử dụng để biểu diễn từ thành các vectơ.
+   - Nó học các vectơ biểu diễn từ trong quá trình huấn luyện mô hình mạng nơ-ron. Điều này có nghĩa là các vectơ biểu diễn từ là các tham số cần được tối ưu hóa khi huấn luyện mô hình.
+   - Keras Embedding thường được sử dụng trong các tác vụ phân loại văn bản hoặc dự đoán chuỗi thời gian, trong đó từ quan trọng để xác định nghĩa và mối quan hệ giữa các từ.
+
+2. Gensim Word2Vec Embedding:
+   - Gensim Word2Vec là một phương pháp nhúng từ tiếng Việt sử dụng thuật toán Word2Vec.
+   - Gensim Word2Vec tạo ra các vectơ biểu diễn từ bằng cách xem xét ngữ cảnh xung quanh từ trong tập dữ liệu và tìm ra các mẫu xuất hiện thường xuyên.
+   - Gensim Word2Vec không yêu cầu quá trình huấn luyện mô hình phân loại riêng biệt. Thay vào đó, nó tạo ra các vectơ từ trực tiếp từ tập dữ liệu huấn luyện.
+
+So sánh:
+- Keras Embedding học các vectơ biểu diễn từ trong quá trình huấn luyện mô hình, trong khi Gensim Word2Vec tạo ra các vectơ từ trực tiếp từ tập dữ liệu.
+- Gensim Word2Vec có thể tạo ra các vectơ từ một cách nhanh chóng và dễ dàng, trong khi Keras Embedding cần huấn luyện mô hình mạng nơ-ron để tạo ra các vectơ từ.
+- Gensim Word2Vec có khả năng xử lý một lượng lớn dữ liệu, trong khi Keras Embedding có thể được tận dụng trong một mạng nơ-ron phức tạp hơn để xử lý vấn đề phân loại văn bản.
+
+Cả hai phương pháp đều có ưu điểm và ứng dụng riêng. Sự lựa chọn giữa Keras Embedding và Gensim Word2Vec phụ thuộc vào yêu cầu cụ thể của bài toán và tính chất của t
+
+Đối vs tập dữ liệu nhỏ, quy mô của model không quá lớn thì keras phù hợp hơn => Sử dụng keras
+Tuy nhiên Keras không hỗ trợ cho tiếng Việt nên sẽ import word2vec có sẵn để encode
 
 
-
+---------------------------------------------------------------------------------------------------------
+Tham khảo
 https://phamdinhkhanh.github.io/2019/04/22/Ly_thuyet_ve_mang_LSTM.html
