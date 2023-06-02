@@ -66,7 +66,7 @@ def mul_pro(topic):
         cr_pm(topic, num_page)
 
 if __name__ == '__main__':
-    topic_lists = ['the-gioi', 'the-thao', 'khoa-hoc','giai-tri','kinh-doanh','phap-luat','giao-duc','suc-khoe']
+    topic_lists = ['the-gioi','the-thao','khoa-hoc','kinh-doanh','phap-luat','giao-duc','suc-khoe']
     threads = []
 
     for topic in topic_lists:
