@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title >Phân loại văn bản</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Phân loại văn bản</h1>
+    <form method="POST">
+        <input style="height:200px; width:500px; text-align: center;" type="text" name="input_text" placeholder="Nhập dữ liệu" required>
+        <button type="submit">Phân loại</button>
+    </form>
+    {% if result %}
+        <h2>Kết quả:</h2>
+        <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>
