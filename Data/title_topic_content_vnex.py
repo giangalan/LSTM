@@ -31,11 +31,11 @@ def crawl(links, tl):
                     pchil = body.findChildren("p", class_="Normal", recursive=False)
                     text = ''
                     for child in pchil:
-                        text += child.text
+                        text += ' '+child.text
                 if text != '':
                     dict['title'].append(title)
                     # dict['description'].append(description)
-                    dict['content'].append(' '+text)
+                    dict['content'].append(text)
                     dict['topic'].append(tl)
                 # dict['URL'] = hashlib.md5(link[22:].encode()).hexdigest()
             except:
